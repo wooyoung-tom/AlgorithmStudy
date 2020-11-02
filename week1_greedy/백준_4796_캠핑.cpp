@@ -53,7 +53,7 @@ int calculate(struct input_info info) {
     if (remainder_day > info.L) {
         current_result += info.L;
     }
-    // 남은 일 수가 L 보다 작다면 -> 남은 일 수 만큼 캠핑 더 할 수 있음
+        // 남은 일 수가 L 보다 작다면 -> 남은 일 수 만큼 캠핑 더 할 수 있음
     else {
         current_result += remainder_day;
     }

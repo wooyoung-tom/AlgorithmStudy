@@ -39,25 +39,27 @@ int calculate(struct input_info info) {
     // 현재 결과 저장할 변수
     int current_result = 0;
 
-    // 계속해서 계산해야 하기 때문에 무한루프로 설정 -> 시간초과의 원인인 것으로 보임.
-    // 무한루프 사용하지 않아도 나머지 사용해서 해결 가능할 듯
-
-    // 캠핑 횟수를 정하고 L 만큼 곱한다.
-    int camp_time = info.V / info.P;
-    current_result = camp_time * info.L;
-
-    // 횟수만큼 캠핑하고 남은 일 수에 대해서 생각한다.
-    int remainder_day = current_V - camp_time * info.P;
-
-    // 남은 일 수가 L 보다 크다면 -> L 일 만큼 캠핑 더 할 수 있음
-    if (remainder_day > info.L) {
-        current_result += info.L;
+    // 계속해서 계산해야 하기 때문에 무한루프로 설정
+    while (true) {
+        // Case 를 나누어서 생각해야 한다.
+        // 1. 남은 일 수가 P 보다 크거나 같을 때 -> L 일 동안은 무조건 사용가능
+        // 하지만 남은 일 수는 P 만큼 빼주어야 함. 남은 일은 사용 못하고 그냥 지나가기 때문
+        if (current_V >= info.P) {
+            current_V -= info.P;
+            current_result += info.L;
+        }
+            // 2. 남은 일 수가 P 보다 작을 때
+            // 2.1 그 남은 일 수가 L 보다 클 때
+        else if (current_V < info.V && current_V > info.L){
+            current_result += info.L;
+            break;
+        }
+            // 2.2 남은 일 수가 L 보다 작을 때
+        else if (current_V < info.V && current_V < info.L) {
+            current_result += current_V;
+            break;
+        }
     }
-    // 남은 일 수가 L 보다 작다면 -> 남은 일 수 만큼 캠핑 더 할 수 있음
-    else {
-        current_result += remainder_day;
-    }
-
     return current_result;
 }
 
