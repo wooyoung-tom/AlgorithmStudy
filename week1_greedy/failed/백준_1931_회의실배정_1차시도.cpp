@@ -1,5 +1,5 @@
 //
-// Created by 최우영 on 2020/11/01.
+// Created by 최우영 on 2020/11/04.
 //
 
 #include <iostream>
@@ -17,8 +17,7 @@ struct meet_info {
 int N;
 vector<meet_info> info_v;   // 회의 시간 정보 구조체 담는 벡터
 
-bool compare(const meet_info& first, const meet_info& second) {
-
+bool compare(const meet_info &first, const meet_info &second) {
     return first.end < second.end;
 }
 
@@ -48,11 +47,21 @@ void solution() {
 
     // 정렬된 vector 순회
     for (int i = 0; i < info_v.size(); ++i) {
-        // 1. 현재 끝나는 시간보다 시작 시간이 크거나 같으면 배정 가능
-        if (current_end <= info_v[i].start) {
+        // 1. 가장 첫 번째 회의 시간은 가장 빠른 시간에 끝나기 때문에 뽑는다.
+        // 뽑고 나서는 끝나는 시간에 대해서 갱신해야 한다.
+        if (i == 0) {
             selected++;
-            // 1-1. 현재 종료시간 갱신
             current_end = info_v[i].end;
+        }
+        // 2. 그 후 부터는 현재 종료 시간과 시작 시간을 비교하여 가능 한지 체크한다.
+        else {
+            // 2-1. 시작 시간이 현재 종료시간보다 빠르면 회의실 사용 불가능.
+            if (info_v[i].start < current_end) continue;
+                // 2-2. 시작 시간이 현재 종료시간보다 느리면 회의실 사용 가능하다.
+            else {
+                selected++;
+                current_end = info_v[i].end;
+            }
         }
     }
 
