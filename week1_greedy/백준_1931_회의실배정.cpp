@@ -20,7 +20,7 @@ vector<meet_info> info_v;   // 회의 시간 정보 구조체 담는 벡터
 bool compare(const meet_info& first, const meet_info& second) {
     // 1. 종료시간을 오름차순으로 정렬하기 위한 조건
     if (first.end < second.end) return true;
-        // 2. 만약 종료시간이 동일할 때 조건
+    // 2. 만약 종료시간이 동일할 때 조건
     else if (first.end == second.end) {
         // 2-1. 시작시간을 오름차순으로 정렬
         if (first.start < second.start)

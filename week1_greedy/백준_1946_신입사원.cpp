@@ -66,8 +66,8 @@ void solution(vector<employ_score> &info) {
             result++;
             current_interview_rank = info[i].interview_rank;
         }
-            // 2. 현재 비교대상인 면접 순위보다 자신의 면접 순위가 낮을 때
-            // 탈락이므로 연산 필요없음.
+        // 2. 현재 비교대상인 면접 순위보다 자신의 면접 순위가 낮을 때
+        // 탈락이므로 연산 필요없음.
         else continue;
     }
 

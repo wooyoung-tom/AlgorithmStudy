@@ -34,14 +34,14 @@ int solution() {
             if (K - current_coin < 0) {
                 A.pop_back();
             }
-                // 현재 동전이 목표 금액과 같다면 고르고 끝내면 된다.
+            // 현재 동전이 목표 금액과 같다면 고르고 끝내면 된다.
             else if (K - current_coin == 0) {
                 selected++;
                 complete = true;
                 break;
             }
-                // 현재 동전이 목표 금액보다 작다면,
-                // K 에서 현재 동전 금액을 빼고, selected 하나 증가시킨다.
+            // 현재 동전이 목표 금액보다 작다면,
+            // K 에서 현재 동전 금액을 빼고, selected 하나 증가시킨다.
             else {
                 K -= current_coin;
                 selected++;

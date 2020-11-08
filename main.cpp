@@ -5,18 +5,21 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <unordered_map>
+#include <string>
 
 using namespace std;
+
+bool solution(vector<string> phone_book) {
+    bool answer = true;
+    return answer;
+}
 
 void input() {
 
 }
 
-void solution() {
-
-}
-
 int main() {
-    input();
-    solution();
+//    input();
+//    solution();
 }
