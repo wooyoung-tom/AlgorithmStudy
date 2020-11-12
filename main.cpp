@@ -39,6 +39,10 @@ vector<int> solution(vector<string> genres, vector<int> plays) {
         albumMap[currentGenre].songInfoVector.push_back(make_pair(i, currentPlay));
     }
 
+    // 정렬 기준을 명확하게 하여야 한다.
+    // 정렬 수행해서 재생 수 순으로 두어야 한다.
+    // 현재 존재하는 장르 담아놓은 vector 를 기준으로 수행한다.
+
     return answer;
 }
 
