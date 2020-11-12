@@ -32,7 +32,7 @@ vector<int> solution(vector<int> progresses, vector<int> speeds) {
             // 1-1. 남은 일 수 넣는 벡터에 넣음
             remainDayVector.push_back(day);
         }
-            // 2. remainProgress 에서 speed 를 나누었을 때 나누어 떨어지지 않을 때
+        // 2. remainProgress 에서 speed 를 나누었을 때 나누어 떨어지지 않을 때
         else {
             // 하루 더 필요 함
             int day = (remainProgress / currentSpeed) + 1;
@@ -48,7 +48,7 @@ vector<int> solution(vector<int> progresses, vector<int> speeds) {
             dayQueue.push(currentRemainDay);
             continue;
         }
-            // queue 원소 유효할 때
+        // queue 원소 유효할 때
         else {
             // queue 의 front 와 비교해야 한다.
             int front = dayQueue.front();
@@ -57,7 +57,8 @@ vector<int> solution(vector<int> progresses, vector<int> speeds) {
                 // 1-1. queue 에 현재 남은 일 수 push
                 dayQueue.push(currentRemainDay);
             }
-                // 2. front 가 현재 남은 일 수보다 작을 때
+
+            // 2. front 가 현재 남은 일 수보다 작을 때
             else {
                 // 2-1. 앞의 모든 기능 (현재 제외) 배포 가능해진다.
                 answer.push_back(dayQueue.size());
