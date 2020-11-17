@@ -8,31 +8,27 @@
 #include <vector>
 #include <unordered_map>
 
+#define MAX 4000 + 1
+
 using namespace std;
 
-// N(1 ≤ N ≤ 5,000,000)과 K (1 ≤ K ≤ N)
-int N, K;
-// 숫자 담을 vector
-vector<int> container;
-
-bool compare(const int &first, const int &second) {
-    return first < second;
-}
+// 배열의 크기 n (1 ≤ n ≤ 4000)
+int n;
+// 숫자 담아놓을 배열 선언 (어차피 배열 최대 크기가 n)
+int A[MAX], B[MAX], C[MAX], D[MAX];
 
 void input() {
-    cin >> N >> K;
+    // 배열의 크기를 입력 받음
+    scanf("%d", &n);
 
-    for (int i = 0; i < N; ++i) {
-        int temp;
-        cin >> temp;
-        container.push_back(temp);
+    // n 만큼 돌면서 배열 element 하나씩 받는다.
+    for (int i = 0; i < n; ++i) {
+        scanf("%d %d %d %d", &A[i], &B[i], &C[i], &D[i]);
     }
 }
 
 void solution() {
-    sort(container.begin(), container.end(), compare);
 
-    cout << container[K - 1];
 }
 
 int main() {
