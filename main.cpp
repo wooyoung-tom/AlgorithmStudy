@@ -12,23 +12,25 @@
 
 using namespace std;
 
-// 수열 A 의 크기 N (1 ≤ N ≤ 1,000,000)
-int N;
-vector<int> A;
+// 나무의 수 N과 상근이가 집으로 가져가려고 하는 나무의 길이 M이 주어진다.
+// (1 ≤ N ≤ 1,000,000, 1 ≤ M ≤ 2,000,000,000)
+// 나무의 높이의 합은 항상 M을 넘기 때문에,
+// 상근이는 집에 필요한 나무를 항상 가져갈 수 있다.
+// 높이는 1,000,000,000보다 작거나 같은 양의 정수 또는 0이다.
+int N, M;
+vector<int> treeHeights;
 
 void input() {
-    cin >> N;
+    cin >> N >> M;
     for (int i = 0; i < N; ++i) {
-        int num;
-        cin >> num;
-        A.push_back(num);
+        int tree;
+        cin >> tree;
+        treeHeights.push_back(tree);
     }
 }
 
 void solution() {
-    // A 의 중간값을 pivot 으로 설정
-    int pivot = A[N / 2];
-    
+
 }
 
 int main() {
