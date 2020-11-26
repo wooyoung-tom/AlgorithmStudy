@@ -12,25 +12,47 @@
 
 using namespace std;
 
-// 나무의 수 N과 상근이가 집으로 가져가려고 하는 나무의 길이 M이 주어진다.
-// (1 ≤ N ≤ 1,000,000, 1 ≤ M ≤ 2,000,000,000)
-// 나무의 높이의 합은 항상 M을 넘기 때문에,
-// 상근이는 집에 필요한 나무를 항상 가져갈 수 있다.
-// 높이는 1,000,000,000보다 작거나 같은 양의 정수 또는 0이다.
-int N, M;
-vector<int> treeHeights;
+int K, N;
+vector<int> length;
+
+int maxValue = 0;
 
 void input() {
-    cin >> N >> M;
-    for (int i = 0; i < N; ++i) {
-        int tree;
-        cin >> tree;
-        treeHeights.push_back(tree);
+    cin >> K >> N;
+    for (int i = 0; i < K; ++i) {
+        int centi;
+        cin >> centi;
+
+        maxValue = max(maxValue, centi);
+
+        length.push_back(centi);
     }
 }
 
 void solution() {
+    int answer = 0;
+    int lower = 1;
+    int upper = maxValue;
 
+    while (lower <= upper) {
+        int count = 0;
+        int mid = (lower + upper) / 2;
+
+        for (int i = 0; i < K; ++i) {
+            int currentLength = length[i];
+            while (currentLength >= 0) {
+                if (currentLength - mid >= 0) count++;
+                currentLength -= mid;
+            }
+        }
+
+        if (count <= N) {
+            answer = mid;
+            lower = mid + 1;
+        } else upper = mid - 1;
+    }
+
+    cout << answer << "\n";
 }
 
 int main() {
