@@ -1,5 +1,5 @@
 //
-// Created by 최우영 on 2020/11/01.
+// Created by 최우영 on 2020/12/03.
 //
 
 #include <iostream>
@@ -60,7 +60,7 @@ int coloringChessBoard() {
             if ((i + j) % 2 == 0) {
                 if (firstColor != targetColor) result++;
             }
-            // 반대로 홀수이면 첫 번째 칸과 색깔이 달라야 한다.
+                // 반대로 홀수이면 첫 번째 칸과 색깔이 달라야 한다.
             else {
                 if (firstColor == targetColor) result++;
             }

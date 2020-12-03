@@ -20,13 +20,13 @@ void input() {
 
 void solution() {
     int counter = 0;
-    ll answerNum;
     string answerStr;
 
     for (int i = 0; i < N; ++i) {
         // 최소 범위, 최대 범위 설정
         ll minRange = i * 1000;
         ll maxRange = (i + 1) * 1000;
+
         // i * 1000 부터 maxRange 까지
         for (int j = minRange; j < maxRange; ++j) {
             const string currentNumStr = to_string(j);
