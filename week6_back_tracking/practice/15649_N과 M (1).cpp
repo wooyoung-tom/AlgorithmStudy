@@ -1,5 +1,5 @@
 //
-// Created by 최우영 on 2020/11/01.
+// Created by 최우영 on 2020/12/03.
 //
 
 #include <iostream>
@@ -11,8 +11,8 @@ using namespace std;
 
 // 자연수 N과 M이 주어진다. (1 ≤ M ≤ N ≤ 8)
 int N, M;
-int arr[8 + 1];
-bool isVisited[8 + 1];
+int arr[8];
+bool isVisited[8];
 
 void input() {
     cin >> N >> M;
@@ -20,7 +20,7 @@ void input() {
 
 void solution(int num) {
     if (num == M) {
-        for (int i = 1; i <= M; ++i) {
+        for (int i = 0; i < M; ++i) {
             cout << arr[i] << " ";
         }
         cout << "\n";
