@@ -9,35 +9,19 @@
 
 using namespace std;
 
-// 자연수 N과 M이 주어진다. (1 ≤ M ≤ N ≤ 8)
-int N, M;
-int arr[8 + 1];
-bool isVisited[8 + 1];
+// N은 3의 거듭제곱이다. 즉 어떤 정수 k에 대해 N=3^k이며,
+// 이때 1 ≤ k < 8이다.
+int N;
 
 void input() {
-    cin >> N >> M;
+
 }
 
-void solution(int num) {
-    if (num == M) {
-        for (int i = 1; i <= M; ++i) {
-            cout << arr[i] << " ";
-        }
-        cout << "\n";
-        return;
-    }
+void solution() {
 
-    for (int i = 1; i <= N; ++i) {
-        if (!isVisited[i]) {
-            isVisited[i] = true;
-            arr[num] = i;
-            solution(num + 1);
-            isVisited[i] = false;
-        }
-    }
 }
 
 int main() {
     input();
-    solution(0);
+    solution();
 }
