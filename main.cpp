@@ -9,12 +9,26 @@
 
 using namespace std;
 
-// N은 3의 거듭제곱이다. 즉 어떤 정수 k에 대해 N=3^k이며,
-// 이때 1 ≤ k < 8이다.
+// 첫 번째 장대에 쌓인 원판의 개수 N (1 ≤ N ≤ 20)
 int N;
+// 옮긴 횟수
+int K;
+
+void hanoi(int num, int start, int end, int mid) {
+    if (num == 1) {
+        printf("%d -> %d\n", start, end);
+        return;
+    }
+
+    hanoi(num - 1, start, mid, end);
+    printf("%d -> %d\n", start, end);
+    hanoi(num - 1, mid, end, start);
+}
 
 void input() {
+    scanf("%d", &N);
 
+    hanoi(N, 1, 3, 2);
 }
 
 void solution() {
