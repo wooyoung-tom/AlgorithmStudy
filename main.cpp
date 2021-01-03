@@ -3,16 +3,9 @@
 //
 
 #include <iostream>
-#include <algorithm>
-#include <vector>
-#include <queue>
 
 using namespace std;
 
-void input() {
-
-}
-
 int main() {
-    input();
+
 }
