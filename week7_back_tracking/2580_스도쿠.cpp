@@ -1,6 +1,7 @@
 //
-// Created by 최우영 on 2020/11/01.
+// Created by 최우영 on 2021/01/04.
 //
+
 
 #include <iostream>
 #include <vector>
@@ -74,9 +75,15 @@ void solveSudoKu(int depth, Point point) {
     for (int i = 1; i <= MAX; ++i) {
         if (!isVisited[point.row][point.col] && isPromising(i, point)) {
             isVisited[point.row][point.col] = true;
+
+            // 스도쿠 판 수정한다.
             sudoku[point.row][point.col] = i;
+
             solveSudoKu(depth + 1, pVector[depth + 1]);
+
+            // 한 번 갔다 왔는데 해결 못했다면 0으로 초기화 시켜주어야 한다.
             sudoku[point.row][point.col] = 0;
+
             isVisited[point.row][point.col] = false;
         }
     }
