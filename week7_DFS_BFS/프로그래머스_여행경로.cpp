@@ -1,5 +1,5 @@
 //
-// Created by 최우영 on 2020/11/01.
+// Created by 최우영 on 2021/01/10.
 //
 
 #include <iostream>
@@ -17,7 +17,7 @@ bool compare(const vector<string> &first, const vector<string> &second) {
     for (int i = 0; i < first.size(); ++i) {
         // 1. 요소가 같으면 continue
         if (first[i] == second[i]) continue;
-        // 2. 다를 때 비교 (알파벳 순서)
+            // 2. 다를 때 비교 (알파벳 순서)
         else return first[i] < second[i];
     }
     return false;
