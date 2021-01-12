@@ -4,58 +4,62 @@
 
 #include <iostream>
 #include <vector>
+#include <queue>
 
 using namespace std;
 
-bool isUsed[10001];
+struct Point {
+    int row, col;
+};
 
-vector<vector<string>> completeRoute;
-vector<string> route;
+// 두 정수 N, M(2 ≤ N, M ≤ 100)
+int N, M;
+int maze[101][101];
+bool isVisited[101][101];
 
-bool compare(const vector<string> &first, const vector<string> &second) {
-    // 어차피 두개 사이즈는 같다.
-    for (int i = 0; i < first.size(); ++i) {
-        // 1. 요소가 같으면 continue
-        if (first[i] == second[i]) continue;
-        // 2. 다를 때 비교 (알파벳 순서)
-        else return first[i] < second[i];
-    }
-    return false;
+int res;
+
+queue<Point> q;
+
+Point movePoint[4] = {
+        Point{0, 1},
+        Point{1, 0},
+        Point{0, -1},
+        Point{-1, 0}};
+
+bool isPossiblePoint(int mRow, int mCol) {
+    return (mRow > 0 && mRow <= N && mCol > 0 && mCol <= M)
+           && maze[mRow][mCol] == 1
+           && !isVisited[mRow][mCol];
 }
 
-void travel(int depth, const string &departure, const vector<vector<string>> &tickets) {
-    if (depth == tickets.size()) {
-        // 마지막 행선지 넣고, route 에 완성된 정보 넣는다.
-        route.push_back(departure);
-        completeRoute.push_back(route);
-        route.pop_back();
-        return;
-    }
+void bfs() {
+    while (!q.empty()) {
+        Point current = q.front();
+        q.pop();
 
-    for (int i = 0; i < tickets.size(); ++i) {
-        // 현재 출발지와 티켓 출발지가 같고, 티켓이 사용하지 않은 티켓일 때
-        if (departure == tickets[i][0] && !isUsed[i]) {
-            isUsed[i] = true;
-            route.push_back(departure);
-            travel(depth + 1, tickets[i][1], tickets);
-            route.pop_back();
-            isUsed[i] = false;
+        for (int i = 0; i < 4; ++i) {
+            int mRow = current.row + movePoint[i].row;
+            int mCol = current.col + movePoint[i].col;
+
+            if (isPossiblePoint(mRow, mCol)) {
+                isVisited[mRow][mCol] = true;
+                res++;
+
+            }
         }
     }
 }
 
-vector<string> solution(vector<vector<string>> tickets) {
-    vector<string> answer;
-
-    travel(0, "ICN", tickets);
-
-    sort(completeRoute.begin(), completeRoute.end(), compare);
-
-    answer = completeRoute[0];
-
-    return answer;
-}
-
 int main() {
+    scanf("%d %d", &N, &M);
+    for (int i = 1; i <= N; ++i) {
+        for (int j = 1; j <= M; ++j) {
+            scanf("%d", &maze[i][j]);
+        }
+    }
 
+    q.push(Point{1, 1});
+    isVisited[1][1] = true;
+    bfs();
 }
