@@ -1,65 +1,51 @@
-//
-// Created by 최우영 on 2020/11/01.
-//
-
 #include <iostream>
 #include <vector>
-#include <queue>
 
 using namespace std;
 
-struct Point {
-    int row, col;
-};
-
-// 두 정수 N, M(2 ≤ N, M ≤ 100)
 int N, M;
-int maze[101][101];
-bool isVisited[101][101];
+int network[101][101];
+bool isInfected[101];
 
 int res;
 
-queue<Point> q;
-
-Point movePoint[4] = {
-        Point{0, 1},
-        Point{1, 0},
-        Point{0, -1},
-        Point{-1, 0}};
-
-bool isPossiblePoint(int mRow, int mCol) {
-    return (mRow > 0 && mRow <= N && mCol > 0 && mCol <= M)
-           && maze[mRow][mCol] == 1
-           && !isVisited[mRow][mCol];
+bool isFinish(int start) {
+    for (int i = 1; i <= N; ++i) {
+        if (network[start][i] != 0) return false;
+    }
+    return true;
 }
 
-void bfs() {
-    while (!q.empty()) {
-        Point current = q.front();
-        q.pop();
+void dfs(int start) {
+    if (isFinish(start)) return;
 
-        for (int i = 0; i < 4; ++i) {
-            int mRow = current.row + movePoint[i].row;
-            int mCol = current.col + movePoint[i].col;
-
-            if (isPossiblePoint(mRow, mCol)) {
-                isVisited[mRow][mCol] = true;
-                res++;
-
-            }
+    for (int i = 1; i <= N; ++i) {
+        if (network[start][i] == 1 && !isInfected[i]) {
+            isInfected[i] = true;
+            dfs(i);
         }
     }
 }
 
 int main() {
-    scanf("%d %d", &N, &M);
-    for (int i = 1; i <= N; ++i) {
-        for (int j = 1; j <= M; ++j) {
-            scanf("%d", &maze[i][j]);
-        }
+    scanf("%d", &N);
+    scanf("%d", &M);
+
+    for (int i = 0; i < M; ++i) {
+        int row, col;
+        scanf("%d %d", &row, &col);
+
+        network[row][col] = 1;
     }
 
-    q.push(Point{1, 1});
-    isVisited[1][1] = true;
-    bfs();
+    isInfected[1] = true;
+
+    dfs(1);
+
+    for (int i = 1; i <= N; ++i) {
+        if (isInfected[i]) res++;
+    }
+
+    // 1번 컴퓨터 빼고 세야하므로 -1 해준다.
+    printf("%d", res - 1);
 }
