@@ -46,7 +46,7 @@ int bfs(const string &begin, const string &target, const vector<string> &words) 
                 string tmp = words[j];
                 // 변환 가능한 단어일 때
                 if (isConvertible(current, tmp) && !isVisited[j]) {
-                    isVisited[j]= true;
+                    isVisited[j] = true;
                     q.push(tmp);
                 }
             }
