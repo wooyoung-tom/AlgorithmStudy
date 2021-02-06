@@ -7,7 +7,7 @@
 #define STAIR_MAX 301
 
 int N;
-int stair[STAIR_MAX];
+int stair[STAIR_MAX] = {0,};
 int dp[STAIR_MAX];
 
 int main() {
