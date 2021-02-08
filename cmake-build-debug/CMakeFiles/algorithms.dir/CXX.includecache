@@ -7,6 +7,10 @@
 #IncludeRegexTransform: 
 
 /Users/wooyoungchoi/Desktop/Dev/CLionProjects/algorithms/main.cpp
-iostream
+string
+-
+vector
+-
+algorithm
 -
 
