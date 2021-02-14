@@ -1,4 +1,4 @@
-"/Users/wooyoungchoi/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/211.5787.12/CLion 2021.1 EAP.app/Contents/bin/cmake/mac/bin/cmake" -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /Users/wooyoungchoi/Desktop/Dev/CLionProjects/algorithms
+"/Users/wooyoungchoi/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/203.7148.70/CLion.app/Contents/bin/cmake/mac/bin/cmake" -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /Users/wooyoungchoi/Desktop/Dev/CLionProjects/algorithms
 -- Configuring done
 -- Generating done
 -- Build files have been written to: /Users/wooyoungchoi/Desktop/Dev/CLionProjects/algorithms/cmake-build-debug
