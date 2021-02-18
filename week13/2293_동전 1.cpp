@@ -31,7 +31,7 @@ int main() {
         // 현재 동전 가치로는 그것보다 작은 가치는 만들지 못한다.
         for (int j = currentValue; j <= k; ++j) {
             // i번째 동전의 가치를 현재 가치에서 뺀 경우의 수를 더한다.
-            dp[j] += dp[j - coin[i]];
+            dp[j] += dp[j - currentValue];
         }
     }
 
