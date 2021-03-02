@@ -33,7 +33,8 @@ int main() {
     for (int i = 0; i < M; ++i) {
         cin >> tmp;
 
-        // card 벡터에서 lower bound 와 upper bound 찾아준다.
+        // card 벡터에서 tmp 에 대한 lower_bound 찾아준다.
+        // 또한 tmp + 1 에 대한 lower_bound 찾아준다.
         auto low = lower_bound(card.begin(), card.end(), tmp);
         auto upper = lower_bound(card.begin(), card.end(), tmp + 1);
 
