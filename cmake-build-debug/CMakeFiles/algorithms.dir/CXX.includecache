@@ -6,7 +6,15 @@
 
 #IncludeRegexTransform: 
 
-/Users/wooyoungchoi/Desktop/Dev/CLionProjects/algorithms/main.cpp
-iostream
+/Users/wooyoungchoi/CLionProjects/algorithms/main.cpp
+string
+-
+vector
+-
+stack
+-
+algorithm
+-
+unordered_map
 -
 

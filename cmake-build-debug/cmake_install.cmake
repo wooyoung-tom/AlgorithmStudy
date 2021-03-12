@@ -1,4 +1,4 @@
-# Install script for directory: /Users/wooyoungchoi/Desktop/Dev/CLionProjects/algorithms
+# Install script for directory: /Users/wooyoungchoi/CLionProjects/algorithms
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -40,5 +40,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/Users/wooyoungchoi/Desktop/Dev/CLionProjects/algorithms/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/Users/wooyoungchoi/CLionProjects/algorithms/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
