@@ -11,10 +11,6 @@ string
 -
 vector
 -
-stack
--
-algorithm
--
-unordered_map
+unordered_set
 -
 
