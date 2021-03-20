@@ -43,14 +43,13 @@ string selectHand(int key, const string &hand) {
             break;
         }
         case 8: {
-            // 5번 버튼일 때 키패드 위치 (1, 1)
+            // 8번 버튼일 때 키패드 위치 (2, 1)
             lTmp = abs(left.row - 2) + abs(left.col - 1);
             rTmp = abs(right.row - 2) + abs(right.col - 1);
             mRow = 2;
             break;
         }
-        default:
-            break;
+        default: break;
     }
 
     if (lTmp < rTmp) {

@@ -11,8 +11,7 @@
 
 using namespace std;
 
-// 0: +, 1: -, 2: *
-int isUsedOperation[3];
+bool isUsedOperation[3];
 
 vector<vector<char>> permutationOp;
 unordered_map<char, int> opPriority;
