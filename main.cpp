@@ -1,67 +1,72 @@
 #include <string>
 #include <vector>
-#include <climits>
 #include <unordered_map>
+#include <unordered_set>
 
 using namespace std;
 
-// 보석 종류를 담을 map
-unordered_map<string, int> gemMap;
-unordered_map<string, bool> isGemSelected;
-
-int length = INT_MAX;
+unordered_map<string, int> map;
+unordered_set<string> set;
 
 vector<int> solution(vector<string> gems) {
     vector<int> answer;
 
-    // 현재 골라 놓은 총 보석 종류의 갯수
-    int selectedGemCnt = 0;
-
-    // 1. 맵 자료구조에서, ‘map[보석 이름] = 빈도수’로 정의를 합니다.
-    for (auto &gem : gems) {
-        gemMap[gem] = 0;
-        isGemSelected[gem] = false;
-    }
-
-    // 2. 왼쪽 포인터 l과 오른쪽 포인터 r을 모두 1번 진열대에 위치시킵니다.
+    // 좌, 우 포인터 두 개 선언
     int left = 0, right = 0;
 
+    // map 초기화 진행, 개수를 위해 set insert
+    for (auto &gem : gems) {
+        map[gem] = 0;
+        set.insert(gem);
+    }
+
+    // 전체 보석의 개수
+    int totalGemsCount = set.size();
+    // 현재 골라놓은 보석의 개수
+    int currentGemsCount = 0;
+
+    int tLeft = 0, tRight = 0;
+
     while (true) {
-        // 3. 양 포인터 중, 둘 중 하나라도 진열대의 범위를 벗어나면 알고리즘을 종료합니다.
+        // left, right 가 범위를 벗어나게되면 종료한다.
         if (left > gems.size() || right > gems.size()) break;
 
-        // 4. 양 포인터가 가리키는 범위 안에 포함된 보석 종류의 개수를 세어 봅니다.(map의 사이즈를 체크합니다)
-        if (selectedGemCnt == gemMap.size()) {
-            // 5-1. 범위 안에 보석 종류가 전체 보석 종류와 일치하면 더 좋은 답인지 체크한 후 l를 증가시킵니다.
-            // 그리고 2로 갑니다.
-            if (right - left < length) {
-                length = right - left;
+        // 현재 골라놓은 보석의 개수가 전체 보석의 개수와 같은지 비교한다.
+        if (totalGemsCount == currentGemsCount) {
+            // 같을 때
+            // 현재 좌, 우 포인터 두개의 길이가 이전에 저장했던 길이와 같으면
+            // 이전에 저장했던 두 포인터를 그대로 가져가야 한다.
+            if (right - left != tRight - tLeft) {
+                tLeft = left;
+                tRight = right;
             }
 
-            // 길이 교체 이후에 left 를 하나 올려줘야 한다.
-            // 그 이전에, 골라놨던 보석의 개수를 하나 줄여야 한다.
-            gemMap[gems[left]]--;
-            // 그리고 난 후, 보석 개수가 0개면, 골랐던 보석 개수에서 하나 줄여야 한다.
-            if (gemMap[gems[left]] == 0) selectedGemCnt--;
-            // 그리고 나서 left 를 하나 옮긴다.
+            // left 를 한 칸 앞으로 옮기는 작업을 수행해야 한다.
             left++;
+
+            // left 에 있는 해당 보석의 빈도 수를 하나 뺀다.
+            map[gems[left - 1]]--;
+
+            // 그러고 나서 해당 보석 빈도 수가 0이 된다면 골라 놓은 보석의 개수를 하나 줄여야 한다.
+            if (map[gems[left - 1]] == 0) currentGemsCount--;
         } else {
-            // 5-2. 범위 안에 보석 종류가 전체 보석 종류보다 작다면 r를 증가시킵니다.
-            // 그리고 3으로 갑니다.
+            // 다를 때
+            // right 를 한 칸 앞으로 옮기는 작업을 수행해야 한다.
             right++;
 
-            gemMap[gems[right]]++;
-            // 그리고 현재 보석이 이미 골라져있는지 확인한다.
-            // 안골라져 있으면 갯수 하나 올려준다.
-            if (!isGemSelected[gems[right]]) {
-                selectedGemCnt++;
-                isGemSelected[gems[right]] = true;
-            }
+            // right 한 칸 앞으로 옮겼는데 범위를 벗어났다면 종료
+            if (right > gems.size()) break;
+
+            // 만약에 한번도 고른적이 없는 보석이라면 현재 골라놓은 보석의 개수 하나 올려준다.
+            if (map[gems[right - 1]] == 0) currentGemsCount++;
+
+            // right 를 한 칸 앞으로 옮긴 후, map 에 해당 보석의 빈도 수를 하나 올려준다.
+            map[gems[right - 1]]++;
         }
     }
 
-    answer.push_back(left);
-    answer.push_back(right);
+    answer.push_back(tLeft + 1);
+    answer.push_back(tRight);
 
     return answer;
 }
