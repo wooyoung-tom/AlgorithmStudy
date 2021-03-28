@@ -17,6 +17,7 @@ long long mean(const vector<int> &v) {
     double mean = (double) sum / v.size();
     return round(mean);
 }
+
 // 중앙값 : N개의 수들을 증가하는 순서로 나열했을 경우 그 중앙에 위치하는 값
 int middle(vector<int> v) {
     int mid = 0;
@@ -28,10 +29,17 @@ int middle(vector<int> v) {
     }
     return v[mid];
 }
+
 // 최빈값 : N개의 수들 중 가장 많이 나타나는 값
 int most(const vector<int> &v) {
+    vector<pair<int, int>> pairV(8000, make_pair(0, 0));
 
+    for (int i = 0; i < v.size(); ++i) {
+        pairV[i + 4000].first = i + 4000;
+        pairV[i + 4000].second++;
+    }
 }
+
 // 범위 : N개의 수들 중 최댓값과 최솟값의 차이
 int range(const vector<int> &v) {
     int minNum = *min_element(v.begin(), v.end());
