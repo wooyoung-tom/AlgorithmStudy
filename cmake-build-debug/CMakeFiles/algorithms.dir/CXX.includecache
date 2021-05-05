@@ -6,17 +6,9 @@
 
 #IncludeRegexTransform: 
 
-/Users/wooyoungchoi/CLionProjects/algorithms/main.cpp
+/Users/wooyoung/CLionProjects/AlgorithmStudy/main.cpp
 iostream
 -
-vector
--
-algorithm
--
-unordered_map
--
-climits
--
-cmath
+deque
 -
 
