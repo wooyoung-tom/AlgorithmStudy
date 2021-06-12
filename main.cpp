@@ -1,30 +1,15 @@
 #include <iostream>
-#include <deque>
+#include <queue>
 
 using namespace std;
 
-int N;
-
-deque<int> cards;
+int N, K;
 
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    cin >> N;
+    cin >> N >> K;
 
-    for (int i = 1; i <= N; ++i) {
-        cards.push_back(i);
-    }
 
-    while (true) {
-        if (cards.size() == 1) break;
-        cards.pop_front();
-        if (cards.size() == 1) break;
-        int front = cards.front();
-        cards.pop_front();
-        cards.insert(cards.end(), front);
-    }
-
-    cout << cards.front();
 }
